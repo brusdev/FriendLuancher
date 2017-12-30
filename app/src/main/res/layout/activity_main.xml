@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.brusdev.friendluancher.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/dateTimeButton"
+                android:backgroundTint="@color/date_time_background"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            <Button
+                android:id="@+id/statusButton"
+                android:backgroundTint="@color/status_background"
+                android:drawableTop="@drawable/ic_signal_cellular_4_bar_white_48dp"
+                android:drawableLeft="@drawable/ic_network_wifi_white_48dp"
+                android:drawableRight="@drawable/ic_battery_full_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/phoneButton"
+                android:backgroundTint="@color/phone_background"
+                android:drawableTop="@drawable/ic_phone_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/phone" />
+            <Button
+                android:id="@+id/messagesButton"
+                android:backgroundTint="@color/messages_background"
+                android:drawableTop="@drawable/ic_message_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/messages" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/photoButton"
+                android:backgroundTint="@color/photo_background"
+                android:drawableTop="@drawable/ic_photo_library_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/photo" />
+            <Button
+                android:id="@+id/cameraButton"
+                android:backgroundTint="@color/camera_background"
+                android:drawableTop="@drawable/ic_photo_camera_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/camera" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/emergencyButton"
+                android:backgroundTint="@color/emergency_background"
+                android:drawableTop="@drawable/ic_warning_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/emergency" />
+            <Button
+                android:id="@+id/otherButton"
+                android:backgroundTint="@color/other_background"
+                android:drawableTop="@drawable/ic_more_vert_white_48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:textColor="@color/md_white_1000"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:text="@string/other" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

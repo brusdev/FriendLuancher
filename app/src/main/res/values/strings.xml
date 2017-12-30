@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FriendLuancher</string>
+    <string name="phone">telefono</string>
+    <string name="messages">messaggi</string>
+    <string name="photo">foto</string>
+    <string name="settings">impostazioni</string>
+    <string name="emergency">emergency</string>
+    <string name="camera">camera</string>
+    <string name="other">altro</string>
+    <string name="status">stato</string>
+    <string name="applications">applicazioni</string>
+    <string name="about">informazioni</string>
+    <string name="sms">sms</string>
+    <string name="mail">mail</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="system">sistema</string>
+</resources>

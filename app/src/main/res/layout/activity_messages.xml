@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.brusdev.friendluancher.MessagesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <Button
+            android:id="@+id/smsButton"
+            android:backgroundTint="@color/sms_background"
+            android:drawableTop="@drawable/ic_apps_white_48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/sms" />
+        <Button
+            android:id="@+id/mailButton"
+            android:backgroundTint="@color/mail_background"
+            android:drawableTop="@drawable/ic_apps_white_48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/mail" />
+        <Button
+            android:id="@+id/whatsappButton"
+            android:backgroundTint="@color/whatsapp_background"
+            android:drawableTop="@drawable/ic_apps_white_48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/whatsapp" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

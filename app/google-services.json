@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1060384933926",
+    "firebase_url": "https://friendluancher.firebaseio.com",
+    "project_id": "friendluancher",
+    "storage_bucket": "friendluancher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060384933926:android:1453c59fd6870974",
+        "android_client_info": {
+          "package_name": "com.brusdev.friendluancher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060384933926-lrnh90v20n8rvvko2t2oca08rvss45th.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.brusdev.friendluancher",
+            "certificate_hash": "05cc65585cbfc8515367698861b2b4650ca6e401"
+          }
+        },
+        {
+          "client_id": "1060384933926-ski6clgqjfo46tl5ath6qvb32n4dictf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpw7dTgUM6hTGmRKXlgx0VF4YQkyNz7Q4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060384933926-ski6clgqjfo46tl5ath6qvb32n4dictf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
