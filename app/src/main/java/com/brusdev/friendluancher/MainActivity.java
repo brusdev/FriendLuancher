@@ -1,5 +1,6 @@
 package com.brusdev.friendluancher;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -19,6 +20,8 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -37,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private Intent dialerIntent;
     private Intent messagesIntent;
     private Intent cameraIntent;
-    private Intent galleryIntent;
+    private Intent favouritesIntent;
     private Intent otherIntent;
+    private Intent emergencyIntent;
 
     private DateFormat dateFormat;
     private DateFormat timeFormat;
@@ -60,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        timeTickReceiver = null;
+        connectivityReceiver = null;
+        batteryChangedReceiver = null;
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         dateFormat = android.text.format.DateFormat.getDateFormat(this);
@@ -79,15 +86,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         messagesIntent = new Intent(MainActivity.this, MessagesActivity.class);
-        messagesIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-
-        packageIntent = new Intent(Intent.ACTION_MAIN, null);
-        packageIntent.addCategory(Intent.CATEGORY_APP_GALLERY);
-        packageIntent.addCategory(Intent.CATEGORY_DEFAULT);
-        componentName = packageIntent.resolveActivity(packageManager);
-        if (componentName != null) {
-            galleryIntent = packageManager.getLaunchIntentForPackage(componentName.getPackageName());
-        }
+        //messagesIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 
         packageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE, null);
         packageIntent.addCategory(Intent.CATEGORY_DEFAULT);
@@ -96,8 +95,14 @@ public class MainActivity extends AppCompatActivity {
             cameraIntent = packageManager.getLaunchIntentForPackage(componentName.getPackageName());
         }
 
+        favouritesIntent = new Intent(MainActivity.this, FavoritesActivity.class);
+        //favouritesIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
         otherIntent = new Intent(MainActivity.this, OtherActivity.class);
-        otherIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        //otherIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+        emergencyIntent = new Intent(MainActivity.this, EmergencyActivity.class);
+        //emergencyIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 
         dateTimeButton = findViewById(R.id.dateTimeButton);
         statusButton = findViewById(R.id.statusButton);
@@ -130,10 +135,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.photoButton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.favoritesButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(MainActivity.this.galleryIntent);
+                startActivity(MainActivity.this.favouritesIntent);
+            }
+        });
+
+        findViewById(R.id.emergencyButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(MainActivity.this.emergencyIntent);
             }
         });
 
@@ -179,15 +191,80 @@ public class MainActivity extends AppCompatActivity {
 
         updateDateTime();
         updateBatteryStatus();
+
+        checkCallPhonePermission();
+    }
+
+    private void checkCallPhonePermission() {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.CALL_PHONE)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.CALL_PHONE},
+                        PERMISSIONS_REQUEST_CALL_PHONE);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_CALL_PHONE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
     @Override
     protected void onStop()
     {
         super.onStop();
-        unregisterReceiver(timeTickReceiver);
-        unregisterReceiver(connectivityReceiver);
-        unregisterReceiver(batteryChangedReceiver);
+        if (timeTickReceiver != null) {
+            unregisterReceiver(timeTickReceiver);
+            timeTickReceiver = null;
+        }
+        if (connectivityReceiver != null) {
+            unregisterReceiver(connectivityReceiver);
+            connectivityReceiver = null;
+        }
+        if (batteryChangedReceiver != null) {
+            unregisterReceiver(batteryChangedReceiver);
+            batteryChangedReceiver = null;
+        }
     }
     private void updateDateTime() {
         Date now = new Date();
@@ -250,4 +327,6 @@ public class MainActivity extends AppCompatActivity {
 
         return new BitmapDrawable(getResources(), battery_bitmap);
     }
+
+    private static final int PERMISSIONS_REQUEST_CALL_PHONE = 1;
 }

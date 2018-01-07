@@ -14,4 +14,12 @@
     <string name="mail">mail</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="system">sistema</string>
+    <string name="title_activity_emergency">EmergencyActivity</string>
+    <string name="contact">contatto</string>
+    <string name="name">nome</string>
+    <string name="number">numero</string>
+    <string name="index">indice</string>
+    <string name="favourites">preferiti</string>
+    <string name="app">app</string>
+    <string name="packageName">package name</string>
 </resources>

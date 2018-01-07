@@ -51,7 +51,7 @@ public class MessagesActivity extends AppCompatActivity {
         packageIntent.resolveActivity(packageManager);
         componentName = packageIntent.resolveActivity(packageManager);
         if (componentName != null) {
-            smsButton.setCompoundDrawablesWithIntrinsicBounds(null, apkInfoExtractor.getAppIconByPackageName(componentName.getPackageName()), null, null);
+            smsButton.setCompoundDrawablesWithIntrinsicBounds(apkInfoExtractor.getAppIconByPackageName(componentName.getPackageName()), null, null, null);
             smsIntent = packageManager.getLaunchIntentForPackage(componentName.getPackageName());
         } else {
             smsButton.setVisibility(View.GONE);
@@ -61,13 +61,13 @@ public class MessagesActivity extends AppCompatActivity {
         packageIntent.setType("message/rfc822");
         resolveInfos = packageManager.queryIntentActivities(packageIntent, 0);
         if (resolveInfos.size() > 0) {
-            mailButton.setCompoundDrawablesWithIntrinsicBounds(null, apkInfoExtractor.getAppIconByPackageName(resolveInfos.get(0).activityInfo.packageName), null, null);
+            mailButton.setCompoundDrawablesWithIntrinsicBounds(apkInfoExtractor.getAppIconByPackageName(resolveInfos.get(0).activityInfo.packageName), null, null, null);
             mailIntent = packageManager.getLaunchIntentForPackage(resolveInfos.get(0).activityInfo.packageName);
         } else {
             mailButton.setVisibility(View.GONE);
         }
 
-        whatsappButton.setCompoundDrawablesWithIntrinsicBounds(null, apkInfoExtractor.getAppIconByPackageName(WHATSAPP_PACKAGE_NAME), null, null);
+        whatsappButton.setCompoundDrawablesWithIntrinsicBounds(apkInfoExtractor.getAppIconByPackageName(WHATSAPP_PACKAGE_NAME), null, null, null);
         whatsappIntent = packageManager.getLaunchIntentForPackage(WHATSAPP_PACKAGE_NAME);
 
 

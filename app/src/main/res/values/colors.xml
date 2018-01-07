@@ -304,7 +304,7 @@
     <color name="status_background">@color/md_blue_grey_500</color>
     <color name="phone_background">@color/md_green_500</color>
     <color name="messages_background">@color/md_orange_500</color>
-    <color name="photo_background">@color/md_purple_500</color>
+    <color name="favourites_background">@color/md_purple_500</color>
     <color name="camera_background">@color/md_blue_500</color>
     <color name="emergency_background">@color/md_red_500</color>
     <color name="other_background">@color/md_teal_500</color>
@@ -315,6 +315,7 @@
     <color name="settings_background">@color/md_orange_500</color>
     <color name="about_background">@color/md_grey_500</color>
     <color name="system_background">@color/md_green_500</color>
+    <color name="photo_background">@color/md_blue_500</color>
 
 
 </resources>

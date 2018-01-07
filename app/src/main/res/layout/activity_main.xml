@@ -76,16 +76,16 @@
             android:layout_weight="1"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/photoButton"
-                android:backgroundTint="@color/photo_background"
-                android:drawableTop="@drawable/ic_photo_library_white_48dp"
+                android:id="@+id/favoritesButton"
+                android:backgroundTint="@color/favourites_background"
+                android:drawableTop="@drawable/ic_filter_list_white_48dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAllCaps="true"
                 android:textColor="@color/md_white_1000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:text="@string/photo" />
+                android:text="@string/favourites" />
             <Button
                 android:id="@+id/cameraButton"
                 android:backgroundTint="@color/camera_background"

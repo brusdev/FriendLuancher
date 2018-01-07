@@ -1,5 +1,6 @@
 package com.brusdev.friendluancher;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.ImageView;
@@ -13,14 +14,25 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder>{
 
-    Context mContext;
+    int mMode;
+    Activity mActivity;
     List<ApkInfo> apkInfos;
 
-    public AppsAdapter(Context context, List<ApkInfo> list){
+    public int getMode() {
+        return mMode;
+    }
 
-        mContext = context;
+    public void setMode(int mode) {
+        this.mMode = mode;
+    }
+
+    public AppsAdapter(Activity activity, List<ApkInfo> list){
+
+        mActivity = activity;
 
         apkInfos = list;
     }
@@ -46,7 +58,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder>{
     @Override
     public AppsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
 
-        View view2 = LayoutInflater.from(mContext).inflate(R.layout.cardview_layout,parent,false);
+        View view2 = LayoutInflater.from(mActivity).inflate(R.layout.cardview_layout,parent,false);
 
         ViewHolder viewHolder = new ViewHolder(view2);
 
@@ -56,7 +68,7 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position){
 
-        ApkInfoExtractor apkInfoExtractor = new ApkInfoExtractor(mContext);
+        ApkInfoExtractor apkInfoExtractor = new ApkInfoExtractor(mActivity);
 
         ApkInfo apkInfo = apkInfos.get(position);
         final String ApplicationPackageName = apkInfo.getPackageName();
@@ -74,15 +86,21 @@ public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder>{
             @Override
             public void onClick(View view) {
 
-                Intent intent = mContext.getPackageManager().getLaunchIntentForPackage(ApplicationPackageName);
+                Intent intent = mActivity.getPackageManager().getLaunchIntentForPackage(ApplicationPackageName);
                 if(intent != null){
 
-                    mContext.startActivity(intent);
-
+                    if (mMode == 1) {
+                        mActivity.startActivity(intent);
+                    } else {
+                        Intent data = new Intent();
+                        data.putExtra("packageName",ApplicationPackageName);
+                        mActivity.setResult(RESULT_OK, data);
+                        mActivity.finish();
+                    }
                 }
                 else {
 
-                    Toast.makeText(mContext,ApplicationPackageName + " Error, Please Try Again.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mActivity,ApplicationPackageName + " Error, Please Try Again.", Toast.LENGTH_LONG).show();
                 }
             }
         });
